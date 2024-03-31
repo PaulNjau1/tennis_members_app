@@ -1,15 +1,92 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
 
 <body>
+
+
+    {% include "mymenu.html" with me="TOBIAS" sponsor="W3SCHOOLS" %}
+
     {%for x in fruits%}
-    <h1>{{x}}</h1>
-
+    <h1>{{x}} {#This is for smaller comments.It wont be displayed#}</h1>
     {%endfor%}
+    {%with firstname="Paul Kaiba"%}
+    <h1>Hello {{firstname}}</h1>
+    {%endwith%}
+
+
+    {% comment%}
+    <h1>This is a comment wont be rendered</h1>
+    {% endcomment%}
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        {%for x in mymembers%}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+        </tr>
 
 
 
+
+        {% endfor%}
+    </table>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        {%for x in columndata%}
+        <tr>
+
+            <td>{{x}}</td>
+
+        </tr>
+
+        {% endfor%}
+    </table>
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+        </tr>
+        {%for x in rowdata%}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+
+
+        </tr>
+
+        {% endfor%}
+
+
+        {%for x in orrowdata%}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.firstname}}</td>
+            <td>{{x.lastname}}</td>
+
+
+        </tr>
+
+        {% endfor%}
+    </table>
 </body>
 
 

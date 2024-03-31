@@ -28,9 +28,17 @@ def main(request):
 
 
 def testing(request):
+    mydata = Member.objects.all().order_by('-firstname').values()
+    columndata = Member.objects.values_list("firstname")
+    rowdata = Member.objects.filter(firstname='Emil').values()
+    orrowdata= Member.objects.filter(firstname='Emil') | Member.objects.filter(firstname='Paul')
     template=loader.get_template('template.html')
     context = {
-        'fruits':['Apple','Banana','Cherry']
+        'fruits':['Apple','Banana','Cherry'],
+        'mymembers':mydata,
+        "columndata":columndata,
+        "rowdata":rowdata,
+        "orrowdata":orrowdata,
     }
 
     return HttpResponse(template.render(context,request))
